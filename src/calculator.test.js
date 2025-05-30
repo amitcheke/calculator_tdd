@@ -5,5 +5,13 @@ describe("String Calculator", () => {
       const result = add("");
       expect(result).toEqual(0);
     });
+    it("should return 1 for single number '1'", () => {
+      const result = add("1");
+      expect(result).toEqual(1);
+    });
+    it("should return 3 for multiple numbers '1,2'", () => {
+      const result = add("1,2");
+      expect(result).toEqual(3);
+    });
   });
 });
