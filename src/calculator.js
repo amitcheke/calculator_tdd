@@ -27,7 +27,7 @@ function validateNumbers(numbers) {
   for (const num of numbers) {
     const val = parseInt(num);
     if (val < 0) negatives.push(num);
-    result.push(val);
+    if (val <= 1000) result.push(val);
   }
 
   if (negatives.length > 0) {
