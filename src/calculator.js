@@ -8,13 +8,18 @@ function add(numbersString) {
 function extractNumbers(inputString) {
   const numberSeparator = ["\n"];
   let numbers = inputString;
-  if (numbers.startsWith("//")) {
-    const customDelimiter = numbers.split("\n")[0].charAt(2);
-    numberSeparator.push(customDelimiter);
+
+  const customDelimiter = extractDelimiters(inputString);
+
+  if (customDelimiter) {
     numbers = numbers.substring(numbers.indexOf("\n") + 1);
   }
 
-  for (const separator of numberSeparator) {
+  const allDelimiters = customDelimiter
+    ? [customDelimiter, ...numberSeparator]
+    : numberSeparator;
+
+  for (const separator of allDelimiters) {
     numbers = numbers.split(separator).join(",");
   }
   return numbers.split(",");
@@ -34,6 +39,14 @@ function validateNumbers(numbers) {
     throw new Error(`negatives not allowed ${negatives.join(",")}`);
   }
   return result;
+}
+
+function extractDelimiters(inputString) {
+  if (!inputString.startsWith("//")) return null;
+
+  const customDelimiterString = inputString.split("\n")[0];
+  const match = customDelimiterString.match(/\[(.*)\]/);
+  return match ? match[1] : customDelimiterString.charAt(2);
 }
 
 export default add;

@@ -49,4 +49,11 @@ describe("String Calculator", () => {
       expect(result).toEqual(2);
     });
   });
+
+  describe("support delimiters of any length with the following format: '//[delimiter]\\n' ", () => {
+    it("should return 6 for '//[***]\\n1***2***3'", () => {
+      const result = add("//[***]\n1***2***3");
+      expect(result).toEqual(6);
+    });
+  });
 });
