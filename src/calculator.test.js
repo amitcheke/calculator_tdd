@@ -13,5 +13,9 @@ describe("String Calculator", () => {
       const result = add("1,2");
       expect(result).toEqual(3);
     });
+    it("should return 6 for multiple numbers '1,2,3'", () => {
+      const result = add("1,2,3");
+      expect(result).toEqual(6);
+    });
   });
 });
