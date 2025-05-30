@@ -18,4 +18,11 @@ describe("String Calculator", () => {
       expect(result).toEqual(6);
     });
   });
+
+  describe("support for additional number separator - \\n", () => {
+    it("should return 6 for valid input '1\\n2,3', with additional separator \\n ", () => {
+      const result = add("1\n2,3");
+      expect(result).toEqual(6);
+    });
+  });
 });
