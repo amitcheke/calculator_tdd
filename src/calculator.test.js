@@ -56,4 +56,18 @@ describe("String Calculator", () => {
       expect(result).toEqual(6);
     });
   });
+
+  describe('support multiple delimiters like this: "//[delim1][delim2]\n"', () => {
+    it('should return 6 for "//[*][%]\\n1*2%3"', () => {
+      const result = add("//[*][%]\n1*2%3");
+      expect(result).toEqual(6);
+    });
+  });
+
+  describe('support multiple delimiters with length longer than one char like this: "//[delim1][delim2]\n"', () => {
+    it('should return 7 for "//[**][%%]\\n1**3%%3"', () => {
+      const result = add("//[**][%%]\n1**3%%3");
+      expect(result).toEqual(7);
+    });
+  });
 });
