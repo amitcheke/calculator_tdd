@@ -25,4 +25,11 @@ describe("String Calculator", () => {
       expect(result).toEqual(6);
     });
   });
+
+  describe("Support different delimiters like ;", () => {
+    it("should return 3 for '//;\n1;2' where default delimiter is ';'", () => {
+      const result = add("//;\n1;2");
+      expect(result).toEqual(3);
+    });
+  });
 });

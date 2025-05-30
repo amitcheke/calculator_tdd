@@ -6,8 +6,13 @@ function add(numbersString) {
 
 function extractNumbers(inputString) {
   const numberSeparator = ["\n"];
-
   let numbers = inputString;
+  if (numbers.startsWith("//")) {
+    const customDelimiter = numbers.split("\n")[0].charAt(2);
+    numberSeparator.push(customDelimiter);
+    numbers = numbers.substring(numbers.indexOf("\n") + 1);
+  }
+
   for (const separator of numberSeparator) {
     numbers = numbers.split(separator).join(",");
   }
