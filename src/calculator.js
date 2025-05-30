@@ -1,7 +1,8 @@
 function add(numbersString) {
   if (!numbersString) return 0;
   const numbers = extractNumbers(numbersString);
-  return numbers.reduce((sum, num) => sum + parseInt(num), 0);
+  const validatedNumbers = validateNumbers(numbers);
+  return validatedNumbers.reduce((sum, num) => sum + num, 0);
 }
 
 function extractNumbers(inputString) {
@@ -17,6 +18,22 @@ function extractNumbers(inputString) {
     numbers = numbers.split(separator).join(",");
   }
   return numbers.split(",");
+}
+
+function validateNumbers(numbers) {
+  const negatives = [];
+  const result = [];
+
+  for (const num of numbers) {
+    const val = parseInt(num);
+    if (val < 0) negatives.push(num);
+    result.push(val);
+  }
+
+  if (negatives.length > 0) {
+    throw new Error(`negatives not allowed ${negatives.join(",")}`);
+  }
+  return result;
 }
 
 export default add;

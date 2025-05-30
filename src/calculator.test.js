@@ -26,10 +26,20 @@ describe("String Calculator", () => {
     });
   });
 
-  describe("Support different delimiters like ;", () => {
+  describe("support different delimiters like ;", () => {
     it("should return 3 for '//;\n1;2' where default delimiter is ';'", () => {
       const result = add("//;\n1;2");
       expect(result).toEqual(3);
+    });
+  });
+
+  describe("handle negative numbers", () => {
+    it("should throw an exception: 'negatives not allowed' incase of calling add with a negative number", () => {
+      expect(() => add("-1,2")).toThrow("negatives not allowed -1");
+    });
+
+    it("should show all negative numbers in an exception message if there are multiple negative numbers", () => {
+      expect(() => add("-1,2,-4")).toThrow("negatives not allowed -1,-4");
     });
   });
 });
