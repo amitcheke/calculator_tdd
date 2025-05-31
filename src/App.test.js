@@ -44,3 +44,16 @@ test("should show result as 8 for //[***]\\n3***2***3 input", async () => {
   const result = await screen.findByText(/Result: 8/i);
   expect(result).toBeInTheDocument();
 });
+
+test("should show result as 9 for //[*][%]\n3*3%3 input", async () => {
+  render(<App />);
+  const btn = screen.getByRole("button", { name: /calculate/i });
+  const input = screen.getByPlaceholderText(/Please enter number string/);
+  fireEvent.input(input, {
+    target: { value: "//[*][%]\n3*3%3" },
+  });
+  await userEvent.click(btn);
+
+  const result = await screen.findByText(/Result: 9/i);
+  expect(result).toBeInTheDocument();
+});
