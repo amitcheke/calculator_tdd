@@ -1,6 +1,7 @@
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). Followed TDD approch to build a string calculator. Code changes are commited frequently that helps to understand how code evolves with every step of TDD.
+- All the calculation logic is present in `calculator.js` and the respective tests are in `calculator.test.js`
 
 ## Available Scripts
 
