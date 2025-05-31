@@ -20,3 +20,14 @@ test("should show result as 4 for 1,3 input", async () => {
   const result = await screen.findByText(/Result: 4/i);
   expect(result).toBeInTheDocument();
 });
+
+test("should show result as 6 for 1\\n2,3 input", async () => {
+  render(<App />);
+  const btn = screen.getByRole("button", { name: /calculate/i });
+  const input = screen.getByPlaceholderText(/Please enter number string/);
+  await userEvent.type(input, "1\n2,3");
+  await userEvent.click(btn);
+
+  const result = await screen.findByText(/Result: 6/i);
+  expect(result).toBeInTheDocument();
+});

@@ -11,7 +11,8 @@ function App() {
   };
 
   const calculate = () => {
-    const sum = add(numberString);
+    const processedInput = numberString.replace(/\\n/g, "\n");
+    const sum = add(processedInput);
     setRsult(sum);
   };
 

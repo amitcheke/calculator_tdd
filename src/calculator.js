@@ -1,7 +1,9 @@
 function add(numbersString) {
   if (!numbersString) return 0;
+
   const numbers = extractNumbers(numbersString);
   const validatedNumbers = validateNumbers(numbers);
+
   return validatedNumbers.reduce((sum, num) => sum + num, 0);
 }
 
